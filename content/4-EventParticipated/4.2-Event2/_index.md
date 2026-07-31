@@ -9,7 +9,7 @@ pre: " <b> 4.2. </b> "
 # Event 2: Event Meeting 2 - Cloud Community & Advanced Architecture Sharing
 
 - **Event Name:** Event Meeting 2 (AWS Hackathon Sharing & Cloud-Native Architecture)
-- **Date & Time:** July 13, 2026
+- **Date & Time:** July 25, 2026
 - **Role:** Attendee
 - **Event Photo & Slide Drive:** [Google Drive Folder](https://drive.google.com/drive/folders/1EgyIOIjUsgAMugJDcKKQy-AYbWkrHrLX)
 

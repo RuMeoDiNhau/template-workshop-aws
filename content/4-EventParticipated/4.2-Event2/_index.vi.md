@@ -9,7 +9,7 @@ pre: " <b> 4.2. </b> "
 # Event 2: Event Meeting 2 - Cloud Community & Advanced Architecture Sharing
 
 - **Tên sự kiện:** Event Meeting 2 (AWS Hackathon Sharing & Cloud-Native Architecture)
-- **Thời gian tổ chức:** 13/07/2026
+- **Thời gian tổ chức:** 25/07/2026
 - **Vai trò trong sự kiện:** Người tham dự (Student Participant)
 - **Link tài liệu & Slide báo cáo:** [Google Drive Folder](https://drive.google.com/drive/folders/1EgyIOIjUsgAMugJDcKKQy-AYbWkrHrLX)
 
