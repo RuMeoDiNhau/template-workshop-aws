@@ -1,78 +1,104 @@
 ---
-title: "Blog 4: Amazon S3 - Quyền truy cập, ứng dụng thực tế và những điều nhận ra"
+title: "Blog 4: Bắt đầu với AWS: Góc nhìn người mới"
 date: 2026-07-31
 weight: 4
 chapter: false
 pre: " <b> 3.4. </b> "
 ---
 
-# Amazon S3 - Quyền truy cập, ứng dụng thực tế và những điều nhận ra
+# Bắt đầu với AWS: Góc nhìn người mới
 
 > *Bài viết được chia sẻ bởi tác giả trên cộng đồng [AWS Study Group VN](https://www.facebook.com/groups/awsstudygroupfcj).*
 
-- **Key** dùng để xác định vị trí của object trong bucket.
+AWS là một hệ sinh thái cloud khá rộng với rất nhiều dịch vụ khác nhau. Khi mới bắt đầu tìm hiểu, mình từng khá bối rối vì không biết nên bắt đầu từ đâu, cũng như những khái niệm nào là quan trọng cần nắm trước.
 
-Ví dụ, một hình ảnh có thể được lưu với đường dẫn:
+Sau một thời gian đọc tài liệu, xem workshop và tìm hiểu các dịch vụ cơ bản trên AWS, mình tổng hợp lại một số kiến thức mà mình nghĩ sẽ hữu ích cho những bạn cũng đang bắt đầu làm quen với AWS.
 
-```
-images/product01.png
-```
-
-S3 sẽ sử dụng key này để quản lý object thay vì cấu trúc thư mục vật lý như trên máy tính.
+Bài viết này không phải là một bài hướng dẫn chuyên sâu, mà là những gì mình tìm hiểu và hiểu được ở thời điểm hiện tại. Nếu có nội dung nào mình hiểu chưa đúng hoặc còn thiếu sót, mình rất mong nhận được góp ý từ mọi người để cùng học hỏi thêm.
 
 ---
 
-### S3 VÀ VẤN ĐỀ QUYỀN TRUY CẬP
+### AWS KHÔNG CHỈ ĐƠN GIẢN LÀ "THUÊ MỘT CÁI SERVER"
 
-Một phần mình thấy quan trọng khi tìm hiểu S3 là vấn đề bảo mật.
+Trước khi tìm hiểu AWS, mình từng nghĩ cloud chỉ là việc đưa ứng dụng lên một máy chủ trên Internet thay vì chạy trên máy cá nhân.
 
-Ban đầu mình nghĩ việc lưu file lên Cloud chỉ cần quan tâm đến dung lượng và tốc độ. Nhưng thực tế, việc kiểm soát ai có thể truy cập dữ liệu cũng rất quan trọng.
+Tuy nhiên, sau khi tìm hiểu sâu hơn, mình nhận ra cloud còn nhiều hơn thế. AWS cung cấp rất nhiều dịch vụ giúp xây dựng, triển khai và vận hành một hệ thống mà không cần tự quản lý toàn bộ phần cứng phía dưới.
 
-AWS cung cấp các cơ chế như:
+Một số dịch vụ cơ bản có thể kể đến:
 
-- **IAM** để quản lý quyền của người dùng và service.
-- **Bucket Policy** để kiểm soát quyền truy cập vào bucket.
-- **Access Control** để quản lý quyền đối với object.
+- **Amazon EC2**: cung cấp máy chủ ảo để chạy ứng dụng.
+- **Amazon S3**: lưu trữ dữ liệu dạng object như hình ảnh, video, file,...
+- **Amazon RDS**: cung cấp database được AWS quản lý.
+- **AWS Lambda**: chạy code mà không cần tự quản lý server.
+- **IAM**: quản lý người dùng và quyền truy cập vào tài nguyên AWS.
+
+Điều mình thấy thú vị là các dịch vụ này không hoạt động riêng lẻ, mà thường kết hợp với nhau để tạo thành một hệ thống hoàn chỉnh.
+
+---
+
+### MỘT VÀI KHÁI NIỆM NỀN TẢNG KHI BẮT ĐẦU TÌM HIỂU AWS
+
+#### Region và Availability Zone
+
+Đây là hai khái niệm mình gặp khá nhiều khi đọc về AWS.
+
+Region có thể hiểu đơn giản là một khu vực địa lý nơi AWS đặt hạ tầng của mình. Khi triển khai một ứng dụng, việc lựa chọn Region phù hợp có thể ảnh hưởng đến độ trễ, chi phí cũng như yêu cầu về dữ liệu.
+
+Bên trong một Region thường có nhiều Availability Zone (AZ). Mỗi AZ là một khu vực hạ tầng độc lập, giúp hệ thống có khả năng hoạt động ổn định hơn khi xảy ra sự cố ở một khu vực cụ thể.
+
+Trước đây mình chỉ nghĩ việc chọn nơi đặt server đơn giản là chọn vị trí gần người dùng. Nhưng khi tìm hiểu thêm, mình mới hiểu rằng thiết kế hệ thống trên cloud còn liên quan đến khả năng mở rộng và tính sẵn sàng.
+
+---
+
+### IAM - PHẦN MÌNH NGHĨ NGƯỜI MỚI KHÔNG NÊN BỎ QUA
+
+Ban đầu khi mới tìm hiểu AWS, mình thường chú ý nhiều hơn đến những service có thể nhìn thấy kết quả ngay như EC2 hoặc S3.
+
+Tuy nhiên, càng tìm hiểu mình càng nhận ra IAM là một phần rất quan trọng.
+
+IAM (Identity and Access Management) giúp quản lý người dùng, quyền truy cập và cách các dịch vụ AWS tương tác với nhau.
+
+Một số khái niệm cơ bản:
+
+- **User**: đại diện cho một người dùng.
+- **Group**: nhóm các user có chung quyền.
+- **Role**: quyền được cấp cho user hoặc service trong một trường hợp cụ thể.
+- **Policy**: tập hợp các quy tắc xác định quyền được phép hoặc bị từ chối.
+
+Điều mình thấy quan trọng nhất ở IAM là nguyên tắc **Least Privilege** - chỉ cấp đúng những quyền cần thiết.
+
+Ví dụ, nếu một ứng dụng chỉ cần đọc dữ liệu từ S3 thì không nhất thiết phải có quyền xóa toàn bộ dữ liệu trong bucket.
+
+Qua việc tìm hiểu IAM, mình bắt đầu nhận ra bảo mật không phải là phần làm sau cùng, mà cần được quan tâm ngay từ khi thiết kế hệ thống.
+
+---
+
+### CÁC SERVICE TRÊN AWS CÓ SỰ LIÊN KẾT VỚI NHAU
+
+Một điều mình thấy khá thú vị khi học AWS là càng tìm hiểu một service thì lại gặp thêm những service khác.
 
 Ví dụ:
 
-Một website có thể cho phép mọi người xem hình ảnh sản phẩm, nhưng không nên để file dữ liệu cá nhân của người dùng bị truy cập công khai.
+- **EC2** liên quan đến VPC, Security Group.
+- **S3** liên quan đến IAM và quyền truy cập.
+- **Database trên RDS** liên quan đến network và security.
 
-Qua việc tìm hiểu S3, mình nhận ra việc lưu trữ dữ liệu luôn đi kèm với việc quản lý quyền truy cập.
-
----
-
-### S3 KHÔNG CHỈ DÙNG ĐỂ LƯU FILE
-
-Lúc đầu mình nghĩ S3 chỉ phù hợp để lưu hình ảnh hoặc tài liệu.
-
-Nhưng khi tìm hiểu thêm, mình nhận ra S3 còn được sử dụng trong nhiều trường hợp khác:
-
-- Lưu trữ dữ liệu backup.
-- Lưu log của hệ thống.
-- Lưu dữ liệu phục vụ phân tích.
-- Lưu file cho các ứng dụng web/mobile.
-
-Một điểm mình thấy hay là S3 có thể kết hợp với nhiều dịch vụ khác trong AWS.
-
-Ví dụ:
-
-- Ứng dụng sử dụng **S3** để lưu file.
-- **Lambda** xử lý dữ liệu khi có file mới được tải lên.
-- **CloudFront** phân phối nội dung nhanh hơn đến người dùng.
+Lúc đầu mình hơi cảm thấy AWS có quá nhiều thứ cần học, nhưng sau đó mình hiểu rằng đây cũng chính là cách AWS được xây dựng. Mỗi service giải quyết một vấn đề riêng, và khi kết hợp lại sẽ tạo thành một hệ thống hoàn chỉnh.
 
 ---
 
-### MỘT VÀI ĐIỀU MÌNH NHẬN RA KHI TÌM HIỂU S3
+### MỘT VÀI SUY NGHĨ SAU KHI BẮT ĐẦU TÌM HIỂU AWS
 
-Điều mình thấy thú vị nhất ở S3 là AWS không chỉ cung cấp một nơi để lưu dữ liệu, mà còn cung cấp cách để quản lý dữ liệu đó một cách linh hoạt.
+Hiện tại mình vẫn còn là người mới trong quá trình học AWS và chắc chắn còn rất nhiều điều cần tìm hiểu thêm.
 
-Ban đầu mình tiếp cận S3 như một "ổ cứng trên Cloud". Nhưng sau khi tìm hiểu thêm, mình hiểu rằng S3 là một thành phần có thể đóng vai trò quan trọng trong kiến trúc của nhiều ứng dụng.
+Tuy nhiên, điều mình nhận ra sau khoảng thời gian đầu làm quen với AWS là không nên cố gắng học tất cả dịch vụ cùng một lúc. Quan trọng hơn là hiểu được từng service được tạo ra để giải quyết vấn đề gì và cách chúng kết hợp với nhau.
 
-Với người mới bắt đầu tìm hiểu AWS, mình nghĩ S3 là một service khá phù hợp để làm quen vì nó giúp hiểu được một trong những ý tưởng quan trọng của Cloud: **tách việc lưu trữ dữ liệu khỏi việc xử lý ứng dụng**.
+Với mình, việc bắt đầu từ những khái niệm nền tảng như Cloud Computing, Region, Availability Zone, IAM hay các service phổ biến như EC2, S3 giúp việc tiếp cận AWS dễ dàng hơn rất nhiều.
+
+Cảm ơn mọi người đã dành thời gian đọc bài viết. Nếu mọi người có thêm góc nhìn, kinh nghiệm hoặc góp ý, mình rất mong được trao đổi thêm ở phần bình luận.
 
 ---
 
-### KẾT LẠI
+### 📚 NGUỒN THAM KHẢO
 
-Hiện tại mình vẫn đang trong quá trình tìm hiểu AWS và Amazon S3 chỉ là một trong những dịch vụ đầu tiên mình tiếp cận.
+- AWS Study Group: [https://www.youtube.com/@AWSStudyGroup](https://www.youtube.com/@AWSStudyGroup)

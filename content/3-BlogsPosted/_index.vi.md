@@ -16,6 +16,9 @@ Phân tích nguyên nhân và giải pháp xử lý các lỗi trình duyệt ch
 
 ### 3. [Blog 3 - Bắt đầu với AWS: Làm quen với Amazon S3](3.3-Blog3/)
 Khi mới tìm hiểu AWS, một trong những dịch vụ đầu tiên mình gặp là Amazon S3. Bài viết chia sẻ những kiến thức cơ bản về S3 dưới góc nhìn của người mới bắt đầu: S3 là gì, tại sao không lưu tất cả trên server, và các khái niệm cơ bản như Bucket, Object.
- 
-### 4. [Blog 4 - Amazon S3: Quyền truy cập, ứng dụng thực tế và những điều nhận ra](3.4-Blog4/)
-Tìm hiểu sâu hơn về S3: cách sử dụng Key để quản lý object, vấn đề quyền truy cập với IAM và Bucket Policy, các ứng dụng thực tế ngoài lưu file (backup, log, analytics), và những nhận ra quan trọng khi làm quen với S3.
+
+### 4. [Blog 4 - Bắt đầu với AWS: Góc nhìn người mới](3.4-Blog4/)
+Tổng hợp kiến thức nền tảng cho người mới bắt đầu với AWS: các dịch vụ cơ bản (EC2, S3, RDS, Lambda, IAM), khái niệm Region & Availability Zone, tầm quan trọng của IAM và nguyên tắc Least Privilege, cùng cách các service AWS liên kết với nhau.
+
+### 5. [Blog 5 - Một ứng dụng web được xây dựng trên Cloud như thế nào?](3.5-Blog5/)
+Tìm hiểu cách một ứng dụng web cơ bản hoạt động trên AWS: từ request của người dùng đến hệ thống phía sau, cách dữ liệu được lưu trữ trên Cloud, vấn đề quản lý bảo mật và vận hành, cùng vai trò của từng thành phần trong kiến trúc hệ thống.

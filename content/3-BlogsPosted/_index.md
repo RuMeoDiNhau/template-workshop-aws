@@ -16,6 +16,9 @@ In-depth root cause analysis and resolution for cross-origin audio/video streami
 
 ### 3. [Blog 3 - Getting Started with AWS: Introduction to Amazon S3](3.3-Blog3/)
 When first exploring AWS, one of the earliest services encountered was Amazon S3. This article shares foundational knowledge about S3 from a beginner's perspective: what S3 is, why not store everything on a server, and basic concepts like Buckets and Objects.
- 
-### 4. [Blog 4 - Amazon S3: Access Control, Real-World Use Cases and Insights](3.4-Blog4/)
-A deeper dive into S3: using Keys to manage objects, access control with IAM and Bucket Policy, real-world use cases beyond file storage (backup, logging, analytics), and key insights from learning S3.
+
+### 4. [Blog 4 - Getting Started with AWS: A Beginner's Perspective](3.4-Blog4/)
+A compilation of foundational knowledge for AWS beginners: core services (EC2, S3, RDS, Lambda, IAM), Region & Availability Zone concepts, the importance of IAM and the Least Privilege principle, and how AWS services interconnect.
+
+### 5. [Blog 5 - How is a Web Application Built on the Cloud?](3.5-Blog5/)
+Exploring how a basic web application works on AWS: from user requests to backend systems, how data is stored on the Cloud, security and operations management, and the role of each component in system architecture.
